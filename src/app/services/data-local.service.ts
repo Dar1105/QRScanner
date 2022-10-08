@@ -32,9 +32,9 @@ export class DataLocalService {
       case 'http':
         //Tarea 2 Abrir el registro en el navegador nativo
         //del dispositivo.
-        console.log("Url:",registro);
       case 'geo':
-        console.log("GEO",registro);
+        this.navCtrl.navigateForward(`/tabs/tab2/mapa/${registro.content}`);
+   
         //Abrir el mapa
         break;
 

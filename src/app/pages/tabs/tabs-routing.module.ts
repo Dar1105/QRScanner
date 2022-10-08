@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
-const routes: Routes = [
+const routes:Routes = [
   {
     path: 'tabs',
     component: TabsPage,
@@ -13,7 +13,16 @@ const routes: Routes = [
       },
       {
         path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        children: [
+          {
+            path:'',
+            loadChildren:()=>import('../tab2/tab2.module').then(m =>m.Tab2PageModule)
+          },
+        {
+          path:'mapa/:geo',
+          loadChildren:()=>import('../map/map.module').then(m =>m.MapModule)
+        }
+        ]
       },
       
       {
@@ -31,6 +40,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes)]
 })
 export class TabsPageRoutingModule {}

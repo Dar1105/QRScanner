@@ -35,7 +35,7 @@ ngAfterViewInit(){
         const result = await BarcodeScanner.startScan();
         if (result.hasContent) {
           console.log(result.content);
-          this.d.guardarRegistro(result.format,result.content)
+          this.dataLocalService.guardarRegistro(result.format,result.content)
           this.scanActive = false;
         }
       }
